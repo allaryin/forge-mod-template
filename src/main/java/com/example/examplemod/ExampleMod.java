@@ -12,14 +12,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
-@Mod(modid = ExampleMod.MODID, version = ExampleMod.VERSION)
+@Mod(modid = Version.MOD_ID, version = Version.VERSION)
 public class ExampleMod
 {
     static final Minecraft MC = Minecraft.getMinecraft();
 
-    static final String  MODID   = "ExampleMod";
-    static final String  VERSION = "1.0.0";
-    static final Logger  LOGGER  = LogManager.getFormatterLogger(MODID);
+    static final Logger  LOGGER  = LogManager.getFormatterLogger(Version.MOD_ID);
     static final Boolean DEV     = Boolean.parseBoolean( System.getProperty("development", "false") );
 
     static File          BaseDir;
@@ -28,7 +26,7 @@ public class ExampleMod
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        BaseDir = new File(event.getModConfigurationDirectory(), MODID);
+        BaseDir = new File(event.getModConfigurationDirectory(), Version.MOD_ID);
         Config  = new Configuration( event.getSuggestedConfigurationFile() );
 
         if ( !BaseDir.exists() )
@@ -43,7 +41,7 @@ public class ExampleMod
         //FMLCommonHandler.instance().bus().register(this);
         //LOGGER.debug("Registered events");
 
-        LOGGER.info("Loaded version %s", VERSION);
+        LOGGER.info("Loaded version %s", Version.VERSION);
     }
 
     @EventHandler
