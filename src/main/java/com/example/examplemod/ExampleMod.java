@@ -15,7 +15,8 @@ import java.io.File;
 @Mod(modid = Version.MOD_ID, version = Version.VERSION)
 public class ExampleMod
 {
-    static final Minecraft MC = Minecraft.getMinecraft();
+	// This only works client side
+    //static final Minecraft MC = Minecraft.getMinecraft();
 
     static final Logger  LOGGER  = LogManager.getFormatterLogger(Version.MOD_ID);
     static final Boolean DEV     = Boolean.parseBoolean( System.getProperty("development", "false") );
