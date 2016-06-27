@@ -1,20 +1,22 @@
-*.class
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
 
-/.nb-gradle/
-/.gradle
-/.nb-gradle-properties
-
-/build/
-/classes/
-/output/
-debug/
-
-/javadocs/
-*-javadoc/
-
-/eclipse/
-/.classpath
-/.project
-
-/.idea/
+# idea
+out
+*.ipr
+*.iws
 *.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
