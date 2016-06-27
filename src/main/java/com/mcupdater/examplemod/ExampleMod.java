@@ -1,10 +1,10 @@
-package com.example.examplemod;
+package com.mcupdater.examplemod;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.config.Configuration;
 import org.apache.logging.log4j.LogManager;
@@ -12,26 +12,24 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 
-@Mod(modid = Version.MOD_ID, version = Version.VERSION)
-public class ExampleMod
-{
-	// This only works client side
-    //static final Minecraft MC = Minecraft.getMinecraft();
-
+@Mod(modid = Version.MOD_ID, useMetadata = true)
+public class ExampleMod {
     static final Logger  LOGGER  = LogManager.getFormatterLogger(Version.MOD_ID);
     static final Boolean DEV     = Boolean.parseBoolean( System.getProperty("development", "false") );
 
-    static File          BaseDir;
-    static Configuration Config;
+    public static ModMetadata metadata;
+
+    public static File          baseDir;
+    public static Configuration config;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        BaseDir = new File(event.getModConfigurationDirectory(), Version.MOD_ID);
-        Config  = new Configuration( event.getSuggestedConfigurationFile() );
+        baseDir = new File(event.getModConfigurationDirectory(), Version.MOD_ID);
+        config  = new Configuration( event.getSuggestedConfigurationFile() );
 
-        if ( !BaseDir.exists() )
-            BaseDir.mkdir();
+        if ( !baseDir.exists() )
+            baseDir.mkdir();
     }
 
     @EventHandler
